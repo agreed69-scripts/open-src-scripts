@@ -201,7 +201,7 @@ Tab:CreateSlider({
     Name = "Speed",
     Range = {16, 250},
     Increment = 1,
-    CurrentValue = speedV,
+    CurrentValue = 16,
     Callback = function(Value)
         speedV = Value
 
