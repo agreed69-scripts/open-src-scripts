@@ -86,12 +86,6 @@ local Window = Rayfield:CreateWindow({
     LoadingTitle = "Loading...",
     LoadingSubtitle = "by Agreed 🥵",
     Theme = "DarkBlue",
-
-    ConfigurationSaving = {
-       Enabled = true,
-       FolderName = nil,
-       FileName = "ContainerRNG"
-    },
 })
 
 local Tab = Window:CreateTab("Main")
@@ -296,7 +290,7 @@ Container:CreateSlider({
     Name = "Buy Delay",
     Range = {0, 60},
     Increment = 0.1,
-    CurrentValue = buyDelay,
+    CurrentValue = 0,
     Callback = function(Value)
         buyDelay = Value
     end,
@@ -339,7 +333,7 @@ Container:CreateSlider({
     Name = "Buy Delay",
     Range = {0, 60},
     Increment = 0.1,
-    CurrentValue = buyDelayFlower,
+    CurrentValue = 0,
     Callback = function(Value)
         buyDelayFlower = Value
     end,
