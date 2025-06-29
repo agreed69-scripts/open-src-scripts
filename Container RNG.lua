@@ -86,6 +86,12 @@ local Window = Rayfield:CreateWindow({
     LoadingTitle = "Loading...",
     LoadingSubtitle = "by Agreed 🥵",
     Theme = "DarkBlue",
+
+    ConfigurationSaving = {
+       Enabled = true,
+       FolderName = nil,
+       FileName = "ContainerRNG"
+    },
 })
 
 local Tab = Window:CreateTab("Main")
