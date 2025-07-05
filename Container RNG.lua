@@ -1,3 +1,4 @@
+
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Players = game:GetService("Players")
@@ -44,6 +45,7 @@ local containerMap = {
     ["DiamondContainer"] = string.char(16) .. "DiamondContainer",
     ["EmeraldContainer"] = string.char(16) .. "EmeraldContainer",
     ["RubyContainer"] = string.char(13) .. "RubyContainer",
+    ["SapphireContainer"] = string.char(17) .. "SapphireContainer"
 }
 
 local containerOptions = {
@@ -68,6 +70,7 @@ local containerOptions = {
     "DiamondContainer",
     "EmeraldContainer",
     "RubyContainer",
+    "SapphireContainer"
 }
 
 local flowerMap = {
@@ -246,14 +249,14 @@ Container:CreateToggle({
         _G.container = Value
         while _G.container do
             for _, container in ipairs(containerHolder:GetChildren()) do
-                remote:FireServer(buffer.fromstring(","), buffer.fromstring("\254\1\0\6." .. container.Name))
+                remote:FireServer(buffer.fromstring("\28"), buffer.fromstring("\254\1\0\6." .. container.Name))
             end
             task.wait()
         end
     end,
 })
 
-local selectedContainer
+local selectedContainer = "JunkContainer"
 
 Container:CreateDropdown({
     Name = "Container",
@@ -279,7 +282,7 @@ Container:CreateToggle({
                 break
             end
 
-            remote:FireServer(buffer.fromstring("*"), buffer.fromstring("\254\1\0\6" .. e))
+            remote:FireServer(buffer.fromstring("\26"), buffer.fromstring("\254\1\0\6" .. e))
             
             task.wait(buyDelay or 0)
         end
@@ -296,7 +299,7 @@ Container:CreateSlider({
     end,
 })
 
-local selectedFlower
+local selectedFlower = "BasicFlowerContainer"
 
 Container:CreateDropdown({
     Name = "Flower Container",
@@ -322,7 +325,7 @@ Container:CreateToggle({
                 break
             end
 
-            remote:FireServer(buffer.fromstring("*"), buffer.fromstring("\254\1\0\6" .. e))
+            remote:FireServer(buffer.fromstring("\26"), buffer.fromstring("\254\1\0\6" .. e))
 
             task.wait(buyDelayFlower or 0)
         end
@@ -349,7 +352,7 @@ Upgrades:CreateToggle({
     Callback = function(Value)
         _G.upgradeinv = Value
         while _G.upgradeinv do
-            remote:FireServer(buffer.fromstring("2"), buffer.fromstring("\254\1\0\6\17MaxInventoryItems"))
+            remote:FireServer(buffer.fromstring("5"), buffer.fromstring("\254\1\0\6\17MaxInventoryItems"))
 
             task.wait(0.5)
         end
@@ -362,7 +365,7 @@ Upgrades:CreateToggle({
     Callback = function(Value)
         _G.upgradeflowers = Value
         while _G.upgradeflowers do
-            remote:FireServer(buffer.fromstring("2"), buffer.fromstring("\254\1\0\6\16MaxFlowersPlaced"))
+            remote:FireServer(buffer.fromstring("5"), buffer.fromstring("\254\1\0\6\16MaxFlowersPlaced"))
 
             task.wait(0.5)
         end
@@ -375,7 +378,7 @@ Upgrades:CreateToggle({
     Callback = function(Value)
         _G.upgradecustomers = Value
         while _G.upgradecustomers do
-            remote:FireServer(buffer.fromstring("2"), buffer.fromstring("\254\1\0\6\fMaxCustomers"))
+            remote:FireServer(buffer.fromstring("5"), buffer.fromstring("\254\1\0\6\fMaxCustomers"))
 
             task.wait(0.5)
         end
@@ -388,7 +391,7 @@ Upgrades:CreateToggle({
     Callback = function(Value)
         _G.upgradecontainers = Value
         while _G.upgradecontainers do
-            remote:FireServer(buffer.fromstring("2"), buffer.fromstring("\254\1\0\6\rMaxContainers"))
+            remote:FireServer(buffer.fromstring("5"), buffer.fromstring("\254\1\0\6\rMaxContainers"))
 
             task.wait(0.5)
         end
@@ -401,7 +404,7 @@ Upgrades:CreateToggle({
     Callback = function(Value)
         _G.upgradepitems = Value
         while _G.upgradepitems do
-            remote:FireServer(buffer.fromstring("2"), buffer.fromstring("\254\1\0\6\14MaxItemsOnPlot"))
+            remote:FireServer(buffer.fromstring("5"), buffer.fromstring("\254\1\0\6\14MaxItemsOnPlot"))
 
             task.wait(0.5)
         end
@@ -413,23 +416,30 @@ local Event = Window:CreateTab("Event")
 Event:CreateSection("Event")
 
 Event:CreateButton({
-    Name = "Buy Iris [2.5M]",
+    Name = "Buy Lavender [10M]",
     Callback = function()
-        remote:FireServer(buffer.fromstring("\1"), buffer.fromstring("\254\1\0\6\4Iris"))
+        remote:FireServer(buffer.fromstring("\22"), buffer.fromstring("\254\1\0\6\bLavender"))
     end,
 })
 
 Event:CreateButton({
-    Name = "Buy Heart Flower [250M]",
+    Name = "Buy Lilly Pad [1B]",
     Callback = function()
-        remote:FireServer(buffer.fromstring("\1"), buffer.fromstring("\254\1\0\6\vHeartFlower"))
+        remote:FireServer(buffer.fromstring("\22"), buffer.fromstring("\254\1\0\6\bLillyPad"))
     end,
 })
 
 Event:CreateButton({
-    Name = "Buy Container Flower [1.5B]",
+    Name = "Buy Cactus [250B]",
     Callback = function()
-        remote:FireServer(buffer.fromstring("\1"), buffer.fromstring("\254\1\0\6\15ContainerFlower"))
+        remote:FireServer(buffer.fromstring("\22"), buffer.fromstring("\254\1\0\6\6Cactus"))
+    end,
+})
+
+Event:CreateButton({
+    Name = "Buy Palm Tree [1T]",
+    Callback = function()
+        remote:FireServer(buffer.fromstring("\22"), buffer.fromstring("\254\1\0\6\bPalmTree"))
     end,
 })
 
@@ -457,7 +467,7 @@ Misc:CreateButton({
 Misc:CreateButton({
     Name = "Free Container",
     Callback = function()
-        remote:FireServer(buffer.fromstring("9"), buffer.fromstring("\254\0\0"))
+        remote:FireServer(buffer.fromstring("<"), buffer.fromstring("\254\0\0"))
     end,
 })
 
