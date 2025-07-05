@@ -288,13 +288,16 @@ Container:CreateToggle({
     end,
 })
 
-Container:CreateSlider({
+Container:CreateInput({
     Name = "Buy Delay",
-    Range = {0, 60},
-    Increment = 0.1,
-    CurrentValue = 0,
-    Callback = function(Value)
-        buyDelay = Value
+    CurrentValue = "0",
+    PlaceholderText = "seconds",
+    RemoveTextAfterFocusLost = false,
+    Callback = function(Text)
+        local number = tonumber(Text)
+        if number then
+            buyDelay = number
+        end
     end,
 })
 
@@ -331,13 +334,16 @@ Container:CreateToggle({
     end,
 })
 
-Container:CreateSlider({
+Container:CreateInput({
     Name = "Buy Delay",
-    Range = {0, 60},
-    Increment = 0.1,
-    CurrentValue = 0,
-    Callback = function(Value)
-        buyDelayFlower = Value
+    CurrentValue = "0",
+    PlaceholderText = "seconds",
+    RemoveTextAfterFocusLost = false,
+    Callback = function(Text)
+        local number = tonumber(Text)
+        if number then
+            buyDelayFlower = number
+        end
     end,
 })
 
