@@ -1,3 +1,4 @@
+
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Players = game:GetService("Players")
@@ -288,16 +289,13 @@ Container:CreateToggle({
     end,
 })
 
-Container:CreateInput({
+Container:CreateSlider({
     Name = "Buy Delay",
-    CurrentValue = "0",
-    PlaceholderText = "seconds",
-    RemoveTextAfterFocusLost = false,
-    Callback = function(Text)
-        local number = tonumber(Text)
-        if number then
-            buyDelay = number
-        end
+    Range = {0, 60},
+    Increment = 0.1,
+    CurrentValue = 0,
+    Callback = function(Value)
+        buyDelay = Value
     end,
 })
 
@@ -334,16 +332,13 @@ Container:CreateToggle({
     end,
 })
 
-Container:CreateInput({
+Container:CreateSlider({
     Name = "Buy Delay",
-    CurrentValue = "0",
-    PlaceholderText = "seconds",
-    RemoveTextAfterFocusLost = false,
-    Callback = function(Text)
-        local number = tonumber(Text)
-        if number then
-            buyDelayFlower = number
-        end
+    Range = {0, 60},
+    Increment = 0.1,
+    CurrentValue = 0,
+    Callback = function(Value)
+        buyDelayFlower = Value
     end,
 })
 
@@ -492,7 +487,8 @@ Misc:CreateSlider({
     Increment = 1,
     CurrentValue = 50,
     Callback = function(Value)
-        plr.Character.Humanoid.JumpHeight = Value
+        plr.Character.Humanoid.JumpPower = Value
+        plr.Character.Humanoid.UseJumpPower = true
     end,
 })
 
